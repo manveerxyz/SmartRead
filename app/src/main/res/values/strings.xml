@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">SmartRead</string>
 
+    <string name="empty_articles_text">No articles to show</string>
+
     <!-- Article 1 -->
     <string name="article_1_header">Do Owners and Their Dogs Have Similar Personalities?</string>
     <string name="article_1_source">Psychology Today</string>
     <string name="article_1_credibility">88%</string>
+
+    <!-- Article 2 -->
+    <string name="article_2_header">Do Anxious Owners Make for Anxious Dogs?</string>
+    <string name="article_2_source">National Geographic</string>
+    <string name="article_2_credibility">82%</string>
 </resources>

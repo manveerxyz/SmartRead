@@ -2,6 +2,8 @@ package com.smartread.smartread;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,8 +12,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.alarm_list);
-        final AlarmListAdapter adapter = new AlarmListAdapter(this);
+        RecyclerView recyclerView = findViewById(R.id.article_list);
+        final ArticleListAdapter adapter = new ArticleListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
