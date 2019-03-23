@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SmartRead</string>
+
+    <!-- Article 1 -->
+    <string name="article_1_header">Do Owners and Their Dogs Have Similar Personalities?</string>
+    <string name="article_1_source">Psychology Today</string>
+    <string name="article_1_credibility">88%</string>
 </resources>
