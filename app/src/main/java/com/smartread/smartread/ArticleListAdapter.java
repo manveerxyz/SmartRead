@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Collections;
@@ -29,12 +30,14 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         private final TextView articleHeaderTextView;
         private final TextView articleSourceTextView;
         private final TextView articleCredibilityTextView;
+        private final ImageView articleFavButton;
 
         private ArticleViewHolder(View itemView) {
             super(itemView);
             articleHeaderTextView = itemView.findViewById(R.id.item_article_header);
             articleSourceTextView = itemView.findViewById(R.id.item_article_source);
             articleCredibilityTextView = itemView.findViewById(R.id.item_credibility);
+            articleFavButton = itemView.findViewById(R.id.item_fav_button);
         }
     }
 
@@ -78,7 +81,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 
 
         // Add Button click listeners
-//        addSwitchListener(alarm, viewHolder, resources);
+        addSwitchListener(viewHolder, resources);
 //        addEditButtonListener(alarm, viewHolder);
     }
 
@@ -94,37 +97,26 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 //        return mAlarms.get(position).id;
 //    }
 //
-//    /**
-//     * Add OnCheckedChange Listener to alarm's "active" switch
-//     *
-//     * @param alarm      Alarm object
-//     * @param viewHolder Alarm's ViewHolder object, containing Switch
-//     * @param resources  Resources file to get color values from
-//     */
-//    private void addSwitchListener(final Alarm alarm, final ArticleViewHolder viewHolder, final Resources resources) {
-//        viewHolder.activeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-//                if (checked) {
-//                    alarm.setActive(true);
-//                    viewHolder.timeTextView.setTextColor(resources.getColor(R.color.colorAccent));
-//                    viewHolder.repetitionTextView.setTextColor(resources.getColor(R.color.colorDarkText));
-//                    // schedule alarm
-//                    Log.i(TAG, "scheduling alarm: " + alarm.id);
-//                    mAlarmHandler.scheduleAlarm(alarm);
-//                } else {
-//                    alarm.setActive(false);
-//                    viewHolder.timeTextView.setTextColor(resources.getColor(R.color.colorGrey500));
-//                    viewHolder.repetitionTextView.setTextColor(resources.getColor(R.color.colorGrey500));
-//                    mAlarmHandler.cancelAlarm(alarm);
-//                }
-//
-//                // Update database and schedule alarm
-//                Log.i(TAG, "updating database with alarm: " + alarm.id);
-//                mAlarmViewModel.updateActive(alarm);
-//            }
-//        });
-//    }
+    /**
+     * Add OnCheckedChange Listener to alarm's "active" switch
+     *
+     * @param viewHolder Alarm's ViewHolder object, containing Switch
+     * @param resources  Resources file to get color values from
+     */
+    private void addSwitchListener(final ArticleViewHolder viewHolder, final Resources resources) {
+        viewHolder.articleFavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (viewHolder.articleFavButton.getTag() != "bg") {
+                    viewHolder.articleFavButton.setImageResource(R.drawable.ic_star_black_24dp);
+                    viewHolder.articleFavButton.setTag("bg");
+                } else {
+                    viewHolder.articleFavButton.setImageResource(R.drawable.ic_star_border_black_24dp);
+                    viewHolder.articleFavButton.setTag("nbg");
+                }
+            }
+        });
+    }
 //
 //    /**
 //     * Add OnClickListener to alarm's edit button to open EditAlarmActivity (AddAlarmActivity.java)

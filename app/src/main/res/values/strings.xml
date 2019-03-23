@@ -3,6 +3,11 @@
 
     <string name="empty_articles_text">No articles to show</string>
 
+    <string name="search_articles">Search Articles</string>
+    <string name="search_custom">Search %s</string>
+
+    <string name="viewed_articles">Viewed Articles</string>
+
     <!-- Article 1 -->
     <string name="article_1_header">Do Owners and Their Dogs Have Similar Personalities?</string>
     <string name="article_1_source">Psychology Today</string>
@@ -12,4 +17,24 @@
     <string name="article_2_header">Do Anxious Owners Make for Anxious Dogs?</string>
     <string name="article_2_source">National Geographic</string>
     <string name="article_2_credibility">82%</string>
+    
+    <array name="array_search_by">
+        <item>Articles</item>
+        <item>Authors</item>
+        <item>Publishers</item>
+    </array>
+
+    <array name="array_sort_by">
+        <item>Highest Rating</item>
+        <item>Lowest Rating</item>
+        <item>Favorites</item>
+        <item>Not Viewed</item>
+    </array>
+
+    <array name="array_filter_by">
+        <item>1 week ago</item>
+        <item>2 weeks ago</item>
+        <item>3 weeks ago</item>
+        <item>4 weeks ago</item>
+    </array>
 </resources>

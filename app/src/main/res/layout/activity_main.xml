@@ -3,20 +3,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/search_articles_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="-10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/colorLightGrey">
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_articles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:queryHint="@string/search_articles"
+            app:queryHint="@string/search_articles"
+            app:defaultQueryHint="@string/search_articles"
+            android:iconifiedByDefault="false"
+            app:iconifiedByDefault="false"
+            android:background="@drawable/bg_white_rounded" />
+
+        <Spinner
+            android:id="@+id/search_articles_spinner"
+            android:textAlignment="viewEnd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.04"
+            android:entries="@array/array_search_by"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/viewed_articles_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/viewed_articles"
+        android:layout_below="@id/search_articles_layout"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <LinearLayout
+        android:id="@+id/viewed_articles_spinners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewed_articles_header"
+        android:orientation="horizontal"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_grey_rounded"
+            android:layout_weight="1"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingEnd="-10dp"
+            android:layout_marginRight="10dp">
+
+            <Spinner
+                android:id="@+id/filter_articles_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/array_filter_by" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_grey_rounded"
+            android:layout_weight="1"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingEnd="-10dp">
+
+            <Spinner
+                android:id="@+id/sort_articles_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/array_sort_by"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/empty_articles_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empty_articles_text"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:text="@string/empty_articles_text" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/article_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_article_header"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@id/viewed_articles_spinners"
+        android:layout_centerHorizontal="true"
+        tools:listitem="@layout/item_article_header" />
 
 </RelativeLayout>
