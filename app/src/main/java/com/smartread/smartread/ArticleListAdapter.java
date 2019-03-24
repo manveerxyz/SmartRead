@@ -34,6 +34,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         private final TextView articleCredibilityTextView;
         private final ImageView articleFavButton;
         private final ImageView articleLogoImageView;
+        private int id;
 
         private ArticleViewHolder(View itemView) {
             super(itemView);
@@ -45,6 +46,10 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 
             itemView.setTag(this);
             itemView.setOnClickListener(mOnItemClickListener);
+        }
+
+        public int getId() {
+            return id;
         }
     }
 
@@ -87,6 +92,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 
         Article article = mArticles.get(position);
 
+        viewHolder.id = article.id;
         viewHolder.articleHeaderTextView.setText(article.title);
         viewHolder.articleSourceTextView.setText(article.source);
         viewHolder.articleCredibilityTextView.setText(String.format("%d%%", article.cred));
@@ -96,8 +102,6 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         } else {
             viewHolder.articleLogoImageView.setImageResource(R.mipmap.ic_natgeo);
         }
-
-
 
         // Add Button click listeners
         addSwitchListener(viewHolder, resources);

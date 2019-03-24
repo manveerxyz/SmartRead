@@ -2,6 +2,7 @@ package com.smartread.smartread;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.support.v7.widget.SearchView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.smartread.smartread.db.Article;
 
@@ -20,14 +20,20 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static String EXTRA_ID = "com.smartread.smartread.MainActivity.extra.id";
+
     private ArticleViewModel articleViewModel;
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
-            int position = viewHolder.getAdapterPosition();
-            Toast.makeText(MainActivity.this, "You Clicked: " + position, Toast.LENGTH_SHORT).show();
+            ArticleListAdapter.ArticleViewHolder viewHolder = (ArticleListAdapter.ArticleViewHolder) view.getTag();
+
+            int id = viewHolder.getId();
+
+            Intent intent = new Intent(MainActivity.this, ArticleActivity.class);
+            intent.putExtra(EXTRA_ID, id);
+            startActivity(intent);
         }
     };
 

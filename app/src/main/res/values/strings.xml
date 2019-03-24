@@ -8,9 +8,14 @@
 
     <string name="viewed_articles">Viewed Articles</string>
 
+    <string name="article_hyperlink">Read Article</string>
+    <string name="average_credibility_score">Average Credibility Score: 88%</string>
+
     <!-- Article 1 -->
     <string name="article_1_header">Do Owners and Their Dogs Have Similar Personalities?</string>
     <string name="article_1_source">Psychology Today</string>
+    <string name="article_1_author">Ray Kidman</string>
+    <string name="article_1_desc">A new study explores whether pets and owners share personalities</string>
     <string name="article_1_credibility">88%</string>
 
     <!-- Article 2 -->
