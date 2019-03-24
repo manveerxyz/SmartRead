@@ -10,6 +10,9 @@
 
     <string name="article_hyperlink">Read Article</string>
     <string name="average_credibility_score">Average Credibility Score: 88%</string>
+    <string name="type_of_source">Type of Source</string>
+    <string name="source_score">Source Score: 74%</string>
+    <string name="content_score">Content Score: 90%</string>
 
     <!-- Article 1 -->
     <string name="article_1_header">Do Owners and Their Dogs Have Similar Personalities?</string>
@@ -17,6 +20,14 @@
     <string name="article_1_author">Ray Kidman</string>
     <string name="article_1_desc">A new study explores whether pets and owners share personalities</string>
     <string name="article_1_credibility">88%</string>
+
+    <string name="article_1_type_source">National Geographic is an American digital cable and satellite television network and flagship channel that is owned by National Geographic Partners. This journal writes about Geography, Science, History, Nature and Cultures.</string>
+    <string name="article_1_source_score_1">The cited study called \"Levels of Anxiety on our Pets\" is not peer reviewed.</string>
+    <string name="article_1_source_score_2">The research study \"Levels of Anxiety on our Pets\" cited in the article is not published in a scientific journal.</string>
+    <string name="article_1_source_score_3">The author does not specialize in scientific studies, her work is more concentrated on historical pieces.</string>
+    <string name="article_1_source_score_4">The articles used a research paper called \"How mental illness of pet owners affects their pets\" was retracted.</string>
+    <string name="article_1_content_score_1">Vague specifics about the study, the article does not contain quantitative data.</string>
+    <string name="article_1_content_score_2">The article uses strong emotional language\n\t - \"I feel that&#8230;\"\n\t - \"I would have liked&#8230;\"</string>
 
     <!-- Article 2 -->
     <string name="article_2_header">Do Anxious Owners Make for Anxious Dogs?</string>
