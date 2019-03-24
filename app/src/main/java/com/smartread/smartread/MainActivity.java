@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.article_list);
+        recyclerView.requestFocus();
         final ArticleListAdapter articleAdapter = new ArticleListAdapter(this);
         recyclerView.setAdapter(articleAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
