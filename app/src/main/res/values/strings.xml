@@ -9,6 +9,7 @@
     <string name="search_custom">Search %s</string>
 
     <string name="viewed_articles">Viewed Articles</string>
+    <string name="related_articles">Related Articles</string>
 
     <string name="deleted">Article Removed</string>
     <string name="undo">UNDO</string>
