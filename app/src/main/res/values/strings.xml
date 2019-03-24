@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SmartRead</string>
+    <string name="article">Article</string>
+    <string name="settings">Settings</string>
 
     <string name="empty_articles_text">No articles to show</string>
 
@@ -9,7 +11,7 @@
     <string name="viewed_articles">Viewed Articles</string>
 
     <string name="article_hyperlink">Read Article</string>
-    <string name="average_credibility_score">Average Credibility Score: 88%</string>
+    <string name="average_credibility_score">Average Credibility Score: %d%%</string>
     <string name="type_of_source">Type of Source</string>
     <string name="source_score">Source Score: 74%</string>
     <string name="content_score">Content Score: 90%</string>
@@ -18,7 +20,7 @@
     <string name="article_1_header">Do Owners and Their Dogs Have Similar Personalities?</string>
     <string name="article_1_source">Psychology Today</string>
     <string name="article_1_author">Ray Kidman</string>
-    <string name="article_1_desc">A new study explores whether pets and owners share personalities</string>
+    <string name="article_1_desc">A new study explores whether pets and owners share personalities.</string>
     <string name="article_1_credibility">88%</string>
 
     <string name="article_1_type_source">National Geographic is an American digital cable and satellite television network and flagship channel that is owned by National Geographic Partners. This journal writes about Geography, Science, History, Nature and Cultures.</string>

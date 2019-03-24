@@ -14,8 +14,12 @@ public class Article {
     @ColumnInfo(name = "article_id")
     public int id;
 
-    @ColumnInfo(name = "alarm_title")
+    @ColumnInfo(name = "article_title")
     public String title;
+    @ColumnInfo(name = "article_author")
+    public String author;
+    @ColumnInfo(name = "article_desc")
+    public String desc;
     @ColumnInfo(name = "article_source")
     public String source;
     @ColumnInfo(name= "article_cred")

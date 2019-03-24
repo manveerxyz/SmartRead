@@ -16,7 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ArticleActivity"
+        <activity
+            android:name=".ArticleActivity"
+            android:label="@string/article"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings"
             android:parentActivityName=".MainActivity"></activity>
     </application>
 

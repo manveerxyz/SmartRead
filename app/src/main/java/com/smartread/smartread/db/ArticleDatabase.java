@@ -69,12 +69,15 @@ public abstract class ArticleDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             Article article = new Article();
             article.title = "Do Owners and Their Dogs Have Similar Personalities?";
+
             article.source = "Psychology Today";
             article.cred = 88;
             article.fav = false;
 
             Article article2 = new Article();
             article2.title = "Do Anxious Owners Make for Anxious Dogs?";
+            article2.author = "Ray Kidman";
+            article2.desc = "A new study explores whether pets and owners share personalities.";
             article2.source = "National Geographic";
             article2.cred = 82;
             article2.fav = false;
