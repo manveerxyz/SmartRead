@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="25dp"
+    android:layout_marginBottom="25dp"
     android:orientation="vertical"
     android:paddingStart="25dp"
     android:paddingEnd="25dp"
@@ -92,10 +93,11 @@
                 android:id="@+id/type_source_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/type_source_arrow_button"
@@ -141,10 +143,11 @@
                 android:id="@+id/source_score_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/source_score_arrow_button"
@@ -179,88 +182,88 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="5dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
+                            android:paddingEnd="10dp"
                             android:text="-9%"
-                            android:paddingEnd="10dp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/article_1_source_score_1"/>
+                            android:text="@string/article_1_source_score_1" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="5dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
+                            android:paddingEnd="10dp"
                             android:text="-9%"
-                            android:paddingEnd="10dp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/article_1_source_score_2"/>
+                            android:text="@string/article_1_source_score_2" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="5dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
+                            android:paddingEnd="10dp"
                             android:text="-5%"
-                            android:paddingEnd="10dp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/article_1_source_score_3"/>
+                            android:text="@string/article_1_source_score_3" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="5dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
+                            android:paddingEnd="10dp"
                             android:text="-4%"
-                            android:paddingEnd="10dp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/article_1_source_score_4"/>
+                            android:text="@string/article_1_source_score_4" />
 
                     </LinearLayout>
 
@@ -277,10 +280,11 @@
                 android:id="@+id/content_score_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/content_score_arrow_button"
@@ -315,44 +319,44 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="5dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
+                            android:paddingEnd="10dp"
                             android:text="-6%"
-                            android:paddingEnd="10dp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/article_1_content_score_1"/>
+                            android:text="@string/article_1_content_score_1" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="5dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
+                            android:paddingEnd="10dp"
                             android:text="-4%"
-                            android:paddingEnd="10dp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/article_1_content_score_2"/>
+                            android:text="@string/article_1_content_score_2" />
 
                     </LinearLayout>
 

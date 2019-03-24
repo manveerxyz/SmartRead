@@ -104,6 +104,12 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_below="@id/viewed_articles_spinners"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/colorLightGrey" />
+
     <TextView
         android:id="@+id/empty_articles_text"
         android:layout_width="wrap_content"

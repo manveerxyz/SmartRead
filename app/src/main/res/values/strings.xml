@@ -10,11 +10,31 @@
 
     <string name="viewed_articles">Viewed Articles</string>
 
+    <!-- Article Activity -->
     <string name="article_hyperlink">Read Article</string>
     <string name="average_credibility_score">Average Credibility Score: %d%%</string>
     <string name="type_of_source">Type of Source</string>
     <string name="source_score">Source Score: 74%</string>
     <string name="content_score">Content Score: 90%</string>
+
+    <!-- Settings -->
+    <string name="news_alerts">News Alerts</string>
+    <string name="alert_frequency">Alert Frequency</string>
+    <string name="alert_frequency_desc">Manage your notification alerts to accommodate your expectations and necessities</string>
+    <string name="turn_off_alerts">Turn off notification alerts for articles</string>
+    <string name="clear_history">Clear History</string>
+    <string name="clear_all_history">Clear all article history</string>
+    <string name="clear">Clear</string>
+
+    <string name="about_us">About Us</string>
+    <string name="about_us_desc">Internet users\' susceptibility to fake news has grown remarkably as the propagation of social media. The aim of our app is to empower the users giving them an effortless and honest interaction with the web.</string>
+
+    <string name="turn_off_all">Turn off for All Articles</string>
+    <string name="turn_off_reason">Up to Reasonably Credible Articles</string>
+    <string name="turn_off_untrust">Only Untrustworthy Articles</string>
+
+    <string name="reason_desc">Up to Reasonably Credible Articles: Only Articles have below 75% credibility</string>
+    <string name="untrust_desc">Only Untrustworthy Articles: Only Articles with rating below 60%</string>
 
     <!-- Article 1 -->
     <string name="article_1_header">Do Owners and Their Dogs Have Similar Personalities?</string>
@@ -43,6 +63,7 @@
     </array>
 
     <array name="array_sort_by">
+        <item>-- Sort By --</item>
         <item>Highest Rating</item>
         <item>Lowest Rating</item>
         <item>Favorites</item>
@@ -50,6 +71,7 @@
     </array>
 
     <array name="array_filter_by">
+        <item>-- Filter By --</item>
         <item>1 week ago</item>
         <item>2 weeks ago</item>
         <item>3 weeks ago</item>
