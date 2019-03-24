@@ -10,6 +10,9 @@
 
     <string name="viewed_articles">Viewed Articles</string>
 
+    <string name="deleted">Article Removed</string>
+    <string name="undo">UNDO</string>
+
     <!-- Article Activity -->
     <string name="article_hyperlink">Read Article</string>
     <string name="average_credibility_score">Average Credibility Score: %d%%</string>

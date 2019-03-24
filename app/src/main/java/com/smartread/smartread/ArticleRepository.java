@@ -41,7 +41,7 @@ public class ArticleRepository {
         new updateAsyncTask(mArticleModel).execute(article);
     }
 
-    public void updateActive(Article article) {
+    public void updateFav(Article article) {
         new updateFavAsyncTask(mArticleModel).execute(article);
     }
 

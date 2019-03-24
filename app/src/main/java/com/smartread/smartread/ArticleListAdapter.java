@@ -65,6 +65,10 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     private Context mContext;
     private View.OnClickListener mOnItemClickListener;
 
+    private Article mRecentlyDeletedItem;
+    private int mRecentlyDeletedItemPosition;
+
+
     public ArticleListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
         mEmptyTextView = ((MainActivity) context).findViewById(R.id.empty_articles_text);
@@ -126,9 +130,31 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     }
 
     public void deleteItem(int position) {
+        mRecentlyDeletedItem = mArticles.get(position);
+        mRecentlyDeletedItemPosition = position;
         mArticles.remove(position);
         notifyItemRemoved(position);
+        showUndoSnackbar();
     }
+
+    private void showUndoSnackbar() {
+        View view = ((MainActivity) mContext).findViewById(R.id.main_layout);
+        Snackbar snackbar = Snackbar.make(view, R.string.deleted,
+                Snackbar.LENGTH_LONG);
+        snackbar.setAction(R.string.undo, new UndoListener());
+        snackbar.show();
+    }
+
+    public class UndoListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            mArticles.add(mRecentlyDeletedItemPosition,
+                    mRecentlyDeletedItem);
+            notifyItemInserted(mRecentlyDeletedItemPosition);
+        }
+    }
+
     @Override
     public long getItemId(int position) {
         return mArticles.get(position).id;

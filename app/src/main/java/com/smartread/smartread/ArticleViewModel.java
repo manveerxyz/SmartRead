@@ -42,8 +42,8 @@ public class ArticleViewModel extends AndroidViewModel {
         mRepository.update(article);
     }
 
-    public void updateActive(Article article) {
-        mRepository.updateActive(article);
+    public void updateFav(Article article) {
+        mRepository.updateFav(article);
     }
 
     public void delete(Article article) {

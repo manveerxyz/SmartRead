@@ -75,6 +75,7 @@ public class ArticleActivity extends AppCompatActivity {
 
                 String textTitle = "Article Credibility";
                 String textContent = "Average Credibility Score: 88%";
+                String bigText = "Average Credibility Score: 88%\n- Source Score: 86%\n- Content Score: 90%\n- Type of Source:\n\t\tPsychology\n\t\tNeuroscience\n\t\tRelationships";
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     CharSequence name = CHANNEL_ID;
@@ -92,6 +93,8 @@ public class ArticleActivity extends AppCompatActivity {
                             .setContentIntent(pendingIntent)
                             .setDefaults(NotificationCompat.DEFAULT_ALL)
                             .setPriority(NotificationCompat.PRIORITY_MAX)
+                            .setStyle(new NotificationCompat.BigTextStyle()
+                                    .bigText(bigText))
                             .setAutoCancel(true);
 
                     notificationManager.notify(0, builder.build());
