@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,8 +42,13 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
             articleCredibilityTextView = itemView.findViewById(R.id.item_credibility);
             articleFavButton = itemView.findViewById(R.id.item_fav_button);
             articleLogoImageView = itemView.findViewById(R.id.item_logo);
+
+            itemView.setTag(this);
+            itemView.setOnClickListener(mOnItemClickListener);
         }
     }
+
+
 
     // Layout members
     private final LayoutInflater mInflater;
@@ -51,14 +57,21 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     private List<Article> mArticles = Collections.emptyList();
     // To handle interactions with database
     private ArticleViewModel mArticleViewModel;
+    private Context mContext;
+    private View.OnClickListener mOnItemClickListener;
 
     public ArticleListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
         mEmptyTextView = ((MainActivity) context).findViewById(R.id.empty_articles_text);
+        mContext = context;
 
         mArticleViewModel = ViewModelProviders.of((MainActivity) context).get(ArticleViewModel.class);
 
         setHasStableIds(true); // so Switch interaction has smooth animations
+    }
+
+    public void setOnItemClickListener(View.OnClickListener itemClickListener) {
+        mOnItemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -104,6 +117,14 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         notifyDataSetChanged();
     }
 
+    public Context getContext() {
+        return mContext;
+    }
+
+    public void deleteItem(int position) {
+        mArticles.remove(position);
+        notifyItemRemoved(position);
+    }
     @Override
     public long getItemId(int position) {
         return mArticles.get(position).id;

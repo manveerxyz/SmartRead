@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.support.v7.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.smartread.smartread.db.Article;
 
@@ -20,6 +21,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ArticleViewModel articleViewModel;
+
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            Toast.makeText(MainActivity.this, "You Clicked: " + position, Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new
                 ItemTouchHelper(new SwipeToDeleteCallback(articleAdapter));
         itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        articleAdapter.setOnItemClickListener(onItemClickListener);
+
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         articleViewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
