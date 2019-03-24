@@ -1,16 +1,25 @@
 package com.smartread.smartread;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.support.v7.widget.SearchView;
 import android.widget.Spinner;
 
+import com.smartread.smartread.db.Article;
+
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ArticleViewModel articleViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +30,21 @@ public class MainActivity extends AppCompatActivity {
         final ArticleListAdapter articleAdapter = new ArticleListAdapter(this);
         recyclerView.setAdapter(articleAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new SwipeToDeleteCallback(articleAdapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        // Get a new or existing ViewModel from the ViewModelProvider.
+        articleViewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
+
+        // Add an observer on the LiveData returned by getAllAlarms.
+        articleViewModel.getAllArticles().observe(this, new Observer<List<Article>>() {
+            @Override
+            public void onChanged(@Nullable final List<Article> articles) {
+                // Update the cached copy of the words in the adapter.
+                articleAdapter.setArticles(articles);
+            }
+        });
 
         final SearchView searchView = findViewById(R.id.search_articles);
         final String[] searchByOptions = getResources().getStringArray(R.array.array_search_by);

@@ -1,20 +1,21 @@
 package com.smartread.smartread;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.smartread.smartread.db.Article;
+
 import java.util.Collections;
+import java.util.List;
 
 /**
  * ArrayAdapter used to populate MainActivity Alarms ListView
@@ -31,6 +32,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         private final TextView articleSourceTextView;
         private final TextView articleCredibilityTextView;
         private final ImageView articleFavButton;
+        private final ImageView articleLogoImageView;
 
         private ArticleViewHolder(View itemView) {
             super(itemView);
@@ -38,6 +40,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
             articleSourceTextView = itemView.findViewById(R.id.item_article_source);
             articleCredibilityTextView = itemView.findViewById(R.id.item_credibility);
             articleFavButton = itemView.findViewById(R.id.item_fav_button);
+            articleLogoImageView = itemView.findViewById(R.id.item_logo);
         }
     }
 
@@ -45,12 +48,15 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     private final LayoutInflater mInflater;
     private final TextView mEmptyTextView;
     // Data list (cached copy of alarms)
-//    private List<Alarm> mAlarms = Collections.emptyList();
-    private int mArticleCount = 0;
+    private List<Article> mArticles = Collections.emptyList();
+    // To handle interactions with database
+    private ArticleViewModel mArticleViewModel;
 
     public ArticleListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
         mEmptyTextView = ((MainActivity) context).findViewById(R.id.empty_articles_text);
+
+        mArticleViewModel = ViewModelProviders.of((MainActivity) context).get(ArticleViewModel.class);
 
         setHasStableIds(true); // so Switch interaction has smooth animations
     }
@@ -66,16 +72,16 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     public void onBindViewHolder(@NonNull ArticleViewHolder viewHolder, int position) {
         Resources resources = viewHolder.itemView.getContext().getResources();
 
-        mArticleCount++;
+        Article article = mArticles.get(position);
+
+        viewHolder.articleHeaderTextView.setText(article.title);
+        viewHolder.articleSourceTextView.setText(article.source);
+        viewHolder.articleCredibilityTextView.setText(String.format("%d%%", article.cred));
 
         if (position == 0) {
-            viewHolder.articleHeaderTextView.setText(R.string.article_1_header);
-            viewHolder.articleSourceTextView.setText(R.string.article_1_source);
-            viewHolder.articleCredibilityTextView.setText(R.string.article_1_credibility);
+            viewHolder.articleLogoImageView.setImageResource(R.mipmap.ic_pt);
         } else {
-            viewHolder.articleHeaderTextView.setText(R.string.article_2_header);
-            viewHolder.articleSourceTextView.setText(R.string.article_2_source);
-            viewHolder.articleCredibilityTextView.setText(R.string.article_2_credibility);
+            viewHolder.articleLogoImageView.setImageResource(R.mipmap.ic_natgeo);
         }
 
 
@@ -88,15 +94,21 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 
     @Override
     public int getItemCount() {
-        mEmptyTextView.setVisibility(mArticleCount > 0 ? View.GONE : View.VISIBLE);
-        return 2;
+        mEmptyTextView.setVisibility(mArticles.size() > 0 ? View.GONE : View.VISIBLE);
+        return mArticles.size();
     }
 
-//    @Override
-//    public long getItemId(int position) {
-//        return mAlarms.get(position).id;
-//    }
-//
+    public void setArticles(List<Article> articles) {
+        Log.i(TAG, "updating alarms data-set");
+        this.mArticles = articles;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return mArticles.get(position).id;
+    }
+
     /**
      * Add OnCheckedChange Listener to alarm's "active" switch
      *
