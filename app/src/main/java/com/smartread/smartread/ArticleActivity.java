@@ -1,7 +1,13 @@
 package com.smartread.smartread;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +20,12 @@ import com.smartread.smartread.db.Article;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 public class ArticleActivity extends AppCompatActivity {
+
+    private static final String CHANNEL_ID = "com.smartread.smartread.articleactivity";
 
     private ArticleViewModel mViewModel;
     private Article mArticle;
@@ -54,8 +65,37 @@ public class ArticleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Uri uri = Uri.parse("https://www.nationalgeographic.com/animals/2019/03/dogs-and-owners-have-similar-personalities/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                Intent intentUri = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intentUri);
+
+                Intent intent = new Intent(ArticleActivity.this, ArticleActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra(MainActivity.EXTRA_ID, mArticle.id);
+                PendingIntent pendingIntent = PendingIntent.getActivity(ArticleActivity.this, 0, intent, 0);
+
+                String textTitle = "Article Credibility";
+                String textContent = "Average Credibility Score: 88%";
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    CharSequence name = CHANNEL_ID;
+//            String description = getString(R.string.channel_description);
+                    int importance = NotificationManager.IMPORTANCE_HIGH;
+                    NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+                    channel.setDescription("description");
+                    NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                    notificationManager.createNotificationChannel(channel);
+
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(ArticleActivity.this, CHANNEL_ID)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setContentTitle(textTitle)
+                            .setContentText(textContent)
+                            .setContentIntent(pendingIntent)
+                            .setDefaults(NotificationCompat.DEFAULT_ALL)
+                            .setPriority(NotificationCompat.PRIORITY_MAX)
+                            .setAutoCancel(true);
+
+                    notificationManager.notify(0, builder.build());
+                }
             }
         });
 
@@ -127,5 +167,7 @@ public class ArticleActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 }
