@@ -5,7 +5,6 @@ Internet users’ susceptibility to fake news has grown remarkably as the propag
 Created during a 24h Hackathon at the University of Toronto. <br>
 
 App built by: [Manveer Basra](https://github.com/ManveerBasra) <br>
-Prototyped by: [Mozammil Khan](https://github.com/MozammilKhan) and [Rayana Azar](https://github.com/rayanaazar)
 ## Demo Images
 
 The application UI was heavily based off of the prototype design.
